@@ -20,10 +20,15 @@ public class StudentController extends TopController {
     @Resource
     private StudentService studentService;
 
+    /**
+     * 增
+     * @param student
+     * @return
+     */
     @PostMapping(value = "insert")
     public Result insert(@RequestBody Student student){
 
-        logger.info(student.toString());
+        logger.info("--------insert--------"+student.toString());
         try {
             studentService.insert(student);
         } catch (Exception e) {
@@ -33,11 +38,23 @@ public class StudentController extends TopController {
         return ResultGenerator.genSuccessResult();
     }
 
+    /**
+     * 删
+     * @param id
+     * @return
+     */
     @PostMapping(value = "delete")
     public Result delete(String id){
+        logger.info("---------delete---------"+id);
+        try {
+            studentService.deleteById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultGenerator.genFailResult(e.getMessage());
+        }
 
-
-        return ResultGenerator.genSuccessResult();
+        return ResultGenerator.genSuccessResult("delete "+id);
+        //return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping(value = "update")

@@ -20,25 +20,11 @@ public interface StudentService extends Service<Student> {
     void insert(Student student) throws Exception;
 
     /**
-     * 批量持久化
-     * @param students
-     */
-    @Override
-    void insert(List<Student> students) throws Exception;
-
-    /**
      * 通过主鍵刪除
      * @param id
      */
     @Override
     void deleteById(String id) throws Exception;
-
-    /**
-     * 批量刪除 eg：ids -> “1,2,3,4”
-     * @param ids
-     */
-    @Override
-    void deleteByIds(String ids) throws Exception;
 
     /**
      * 更新
@@ -47,6 +33,7 @@ public interface StudentService extends Service<Student> {
     @Override
     void update(Student model) throws Exception;
 
+
     /**
      * 通过ID查找
      * @param id
@@ -54,6 +41,27 @@ public interface StudentService extends Service<Student> {
      */
     @Override
     Student findById(String id) throws Exception;
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * 批量持久化
+     * @param students
+     */
+    @Override
+    void insert(List<Student> students) throws Exception;
+
+
+    /**
+     * 批量刪除 eg：ids -> “1,2,3,4”
+     * @param ids
+     */
+    @Override
+    void deleteByIds(String ids) throws Exception;
+
 
     /**
      * 通过Model中某个成员变量名称（非数据表中column的名称）查找,value需符合unique约束

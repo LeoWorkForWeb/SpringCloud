@@ -24,4 +24,10 @@ public class StudentServiceImpl extends AbstractService<Student> implements Stud
 
         studentMapper.insert(student);
     }
+
+    @Override
+    public void deleteById(String id) {
+        //super.deleteById(id);
+        studentMapper.deleteById(id);
+    }
 }

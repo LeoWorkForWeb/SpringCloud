@@ -26,14 +26,23 @@
     </resultMap>
 
 
+    <!--增-->
     <insert id="insert">
         insert into Students (Id,Name,Sex,Age,PhotoNum,Address,Email)
         value (#{id},#{name},#{sex},#{age},#{photoNum},#{address},#{email})
     </insert>
 
+
+    <!--删-->
+    <!-- 增删改查标签里的id:一定要和接口里对应的方法名一致 -->
+    <delete id="deleteById" parameterType="String">
+        delete from Students where Id=#{id}
+    </delete>
+
+
     <!-- ==================定义sql片段==============
     sql:是sql片段标签属性id是该片段的唯一标识 -->
-    <sql id="zd">
+    <sql id="student" >
         Id,Name,Sex,Age,PhotoNum,Address,Email
     </sql>
 
@@ -44,7 +53,7 @@
     <select id="login" parameterType="com.top.app.model.Student">
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
         select
-        <include refid="zd"/>
+        <include refid="student"/>
         from Students
         <where>
             Name=#{Name} and Sex=#{Sex}
@@ -55,7 +64,7 @@
     <select id="studentsList" parameterType="com.top.app.model.Student">
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
         select
-        <include refid="zd"/>
+        <include refid="student"/>
         from Students
     </select>
 
@@ -63,24 +72,14 @@
     <select id="updateid" parameterType="com.top.app.model.Student">
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
         select
-        <include refid="zd"/>
+        <include refid="student"/>
         from Students
         <where>Id=#{Id}</where>
     </select>
 
 
 
-    <!-- 添加用户信息 -->
-    <insert id="insert2" parameterType="com.top.app.model.Student">
-        insert into Students(<include refid="zd"/>)
-        values
-        (#{Id},#{Name},#{Sex},#{Age},#{PhotoNum},#{Address},#{Email})
-    </insert>
 
-    <!-- 增删改查标签里的id:一定要和接口里对应的方法名一致 -->
-    <delete id="delete" parameterType="String">
-        delete from Students where Id=#{Id}
-    </delete>
 
     <!-- 修改用户信息 -->
     <update id="update" parameterType="com.top.app.model.Student">
@@ -94,7 +93,7 @@
     <select id="select" parameterType="java.util.Map">
         <!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
         select
-        <include refid="zd"/>
+        <include refid="student"/>
         from Students
         <!-- 当页面没有输入用户名和选择权限，就让它的条件永远为真，就变成全查询了 -->
         <where>

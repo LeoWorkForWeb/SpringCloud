@@ -11,6 +11,20 @@ import java.io.Serializable;
 public class Student implements Serializable {
 
 
+    /**
+     * CREATE TABLE Students
+     * (
+     * Id varchar(255),
+     * Name varchar(255),
+     * Sex varchar(255),
+     * Age varchar(255),
+     * PhotoNum varchar(255),
+     * Address varchar(255),
+     * Email varchar(255)
+     * )
+     *
+     */
+
     private static final long serialVersionUID = -3272421320600950226L;
 
     @Id
