@@ -40,7 +40,7 @@ public interface StudentService extends Service<Student> {
      * @return
      */
     @Override
-    Student findById(String id) throws Exception;
+    Student queryById(String id) throws Exception;
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,7 @@ public interface StudentService extends Service<Student> {
      * @throws TooManyResultsException
      */
     @Override
-    Student findBy(String fieldName, Object value) throws TooManyResultsException;
+    Student queryBy(String fieldName, Object value) throws TooManyResultsException;
 
     /**
      * 通过多个ID查找//eg：ids -> “1,2,3,4”
@@ -79,7 +79,7 @@ public interface StudentService extends Service<Student> {
      * @return
      */
     @Override
-    List<Student> findByIds(String ids) throws Exception;
+    List<Student> queryByIds(String ids) throws Exception;
 
     /**
      * 根据条件查找
@@ -87,13 +87,13 @@ public interface StudentService extends Service<Student> {
      * @return
      */
     @Override
-    List<Student> findByCondition(Condition condition) throws Exception;
+    List<Student> queryByCondition(Condition condition) throws Exception;
 
     /**
      * 获取所有
      * @return
      */
     @Override
-    List<Student> findAll() throws Exception;
+    List<Student> queryAll() throws Exception;
 
 }

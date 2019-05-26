@@ -52,12 +52,12 @@ public abstract class AbstractService<T> implements Service<T> {
     }
 
     @Override
-    public T findById(String id) {
+    public T queryById(String id) {
         return mapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public T findBy(String fieldName, Object value) throws TooManyResultsException {
+    public T queryBy(String fieldName, Object value) throws TooManyResultsException {
         try {
             T model = modelClass.newInstance();
             Field field = modelClass.getDeclaredField(fieldName);
@@ -70,17 +70,17 @@ public abstract class AbstractService<T> implements Service<T> {
     }
 
     @Override
-    public List<T> findByIds(String ids) {
+    public List<T> queryByIds(String ids) {
         return mapper.selectByIds(ids);
     }
 
     @Override
-    public List<T> findByCondition(Condition condition) {
+    public List<T> queryByCondition(Condition condition) {
         return mapper.selectByCondition(condition);
     }
 
     @Override
-    public List<T> findAll() {
+    public List<T> queryAll() {
         return mapper.selectAll();
     }
 }

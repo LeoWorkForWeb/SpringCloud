@@ -15,4 +15,8 @@ public interface StudentMapper {
      * @param id
      */
     void deleteById(String id);
+
+    Student queryById(String id);
+
+    void updateById(String id);
 }
